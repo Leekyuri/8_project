@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+	<style type="text/css">
+		* {margin: 0; padding: 0; font-family: 'Roboto', sans-serif;}
+		body {overflow-x: hidden;}
+		section {width: 100%; height:100vh; position: relative;}
+		section:nth-child(1) {background: #C395C2;}
+		section:nth-child(2) {background: #C395C2;}
+		#clang {position: absolute;
+				width: 100px; 
+				top: -40px; 
+				opacity: 0;
+				left: 7px; z-index: 11;
+				
+				transition:all ease 0.2s;}
+
+		#nopain {position: absolute; 
+				width: 100px; 
+				top: 110px; 
+				left: 20px; z-index: 11;
+				opacity: 0;
+				transition:all ease 0.2s;}
+
+		#ouch {position: absolute; 
+				width: 100px; 
+				top: 120px; 
+				left: 20px; z-index: 11;
+				opacity: 0;
+				transition:all ease 0.2s;}
+
+		.contain {width: 1280px; height: 900px; margin: 0 auto;
+				position: relative;}
+
+		.bubble {width:50px; height: 50px; 
+			 border-radius: 50%;
+			 border: 2px solid #353535;
+			 box-sizing: border-box;
+			 display: inline-block;
+			 margin-left: 5px; cursor: pointer;
+			 background-image: linear-gradient(to bottom right, #ECC8CC, #8FC2DE); z-index: 7; width: 50px; position: absolute; 
+				animation: re 0.5s ease infinite alternate; 
+			}
+			.bubble2 {width:30px; height: 30px; 
+			 border-radius: 50%;
+			 border: 2px solid #353535;
+			 box-sizing: border-box;
+			 display: inline-block;
+			 margin-left: 5px;
+			 background-color: white; z-index: 7; width: 30px; position: absolute; 
+				animation: re 0.5s ease infinite alternate; 
+			}
+
+			@keyframes re{
+				from{ top: 0; }
+				to{top: 20px;}
+				}
+
+		.box {width: 200px; height: 200px; 
+			position: absolute;
+			border: 2px solid #353535; 
+			opacity: 1; 
+			transition: all 1s ease;
+			transform: scale(0);
+			cursor: grab;}
+
+
+		.box .topBox {width:inherit; height: 20px; 
+			position: absolute; 
+			border-bottom: 2px solid #353535;}
+		.box .topBox .round {width:10px; height: 10px; 
+							border-radius: 50%;
+							border: 2px solid #353535;
+							box-sizing: border-box;
+							display: inline-block;
+							margin-left: 5px;}
+		.box .bottomBox {width:200px; height: 180px; 
+						position: absolute; top: 20px;}
+
+		
+
+		.box1 {top:100px; left: 330px; z-index: 3;}
+		.box1 .tB1 {background: #FFFFFF;}
+		.box1 .bB1 {background: #F4F4F4;}
+		#b1 {width: 90px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: bottle 10s linear infinite;}
+
+		.box2 {width: 260px; height: 260px; top:70px; left: 730px; z-index: 4;}
+		.box2 .tB2 {width: inherit; height: 20px; background: #FFFFFF; }
+		.box2 .bB2 {width:inherit; height: 240px; background: #F4F4F4; }
+		#bag1 {width: 150px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); transform-origin:50% 0%; cursor: pointer; animation: bag 1s ease infinite alternate;}
+		#bag1:hover {animation: none;}
+		.box3 {width: 240px; height: 240px; top:200px; left: 410px; z-index: 5;}
+		.box3 .tB3 {width: inherit; background: #FFFFFF;}
+		.box3 .bB3 {width: inherit; height: 220px; background: #EDDAEF; overflow: hidden;}
+		.box3 .bB3 .round2 {width:160px; height: 160px; 
+							border-radius: 50%;
+							border: 2px solid #353535;
+							box-sizing: border-box;
+							display: inline-block;
+							margin-left: 5px;
+							position: absolute;
+							top: 50%; left:50%; transform: translate(-50%,-50%);
+							background: white;}
+		.box3 .bB3 .round3 {width:120px; height: 120px; 
+							border-radius: 50%;
+							border: 2px solid #353535;
+							box-sizing: border-box;
+							display: inline-block;
+							margin-left: 5px;
+							position: absolute;
+							top: 50%; left:50%; transform: translate(-50%,-50%);
+							background:#C395C2;}
+		#bottle2 {width: 50px; position: absolute;
+					top: 50%; left:50%; 
+					transform: translate(-50%,-50%); 
+					cursor: pointer; animation: bottle2 1s linear infinite alternate;
+					transform-origin: 50% 50%;}
+		#bottle2:hover {animation: none;}
+		.box4 {width: 220px; height: 220px; top:500px; left: 330px; z-index: 6;}
+		.box4 .tB4 {width: inherit; background: #FFFFFF;}
+		.box4 .bB4 {width: inherit; height: 200px; background: #EDDAEF;}
+		#iv {width: 140px; position: absolute; top: 70%; left: 50%; transform: translate(-50%,-50%); cursor: pointer; animation: iv 1.5s linear infinite; transform-origin: 50%; animation-play-state: paused;}
+
+		.box5 {width: 160px; height: 160px; top:640px; left: 520px; z-index: 8;}
+		.box5 .tB5 {width: inherit; background: #FFFFFF;}
+		.box5 .bB5 {width: inherit; height: 140px; background: #F4F4F4;}
+		#not {width: 50px; position: absolute; top: 25px; left: 10px;}
+
+		.box6 {width: 240px; height: 240px; top:540px; left: 830px; z-index: 9;}
+		.box6 .tB6 {width: inherit; background: #FFFFFF;}
+		.box6 .bB6 {width: inherit; height: 220px; background: #F4F4F4;}
+
+		.box7 {width: 280px; height: 280px; top:300px; left: 600px; z-index: 10;}
+		.box7 .tB7 {width: inherit; background: #FFFFFF;}
+		.box7 .bB7 {width: inherit; height: 260px; background: #F4F4F4;}
+		.box8 {width: 180px; height: 180px; top:240px; left: 0px; z-index: 14;}
+		.box8 .tB8 {width: inherit; background: #FFFFFF;}
+		.box8 .bB8 {width: inherit; height: 160px; background: #EDDAEF;}
+		.box9 {width: 120px; height: 120px; top:160px; left: -100px; z-index: 13;}
+		.box9 .tB9 {width: inherit; background: #FFFFFF;}
+		.box9 .bB9 {width: inherit; height: 100px; background: #F4F4F4;}
+		.box10 {width: 200px; height: 200px; top:600px; left: 40px; z-index: 15;}
+		.box10 .tB10 {width: inherit; background: #FFFFFF;}
+		.box10 .bB10 {width: inherit; height: 180px; background: #F4F4F4;}
+		.box11 {width: 170px; height: 170px; top:20px; left: 1150px; z-index: 16;}
+		.box11 .tB11 {width: inherit; background: #FFFFFF;}
+		.box11 .bB11 {width: inherit; height: 150px; background: #F4F4F4;}
+		.box12 {width: 240px; height: 240px; top:400px; left: 1200px; z-index: 17;}
+		.box12 .tB12 {width: inherit; background: #FFFFFF;}
+		.box12 .bB12 {width: inherit; height: 220px; background: #EDDAEF;}
+
+
+
+
+		#m1 {width: 240px; position: absolute; top: 10px; left: 10px; cursor: pointer;}
+		#m2 {position: absolute; width: 170px; top: 15px; left: 30px;}
+		#blah1 {width: 260px; position: absolute; top: 85px; left: 10px; cursor: pointer;}
+		.box3 .bB3 #pm {width: 400px; position: absolute; top: -20px; left: -70px;}
+		#die {width: inherit; position: absolute; opacity: 0; transition:all ease 1s; z-index: -99; top:50%; transform: translateY(-50%);}
+		
+		#yb {width: 100px; position: absolute; left: 50%; transform: translate(-50%,-50%); top: 100px; cursor: pointer; animation: yb 1s ease infinite alternate;}
+		#yb:hover {animation: none;}
+		#play {width: 50px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); cursor: pointer; animation: turn 1.5s ease infinite;}
+		#play:hover {animation: none;}
+		#bd {width: 60px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); cursor: pointer; animation: popo 1.5s ease infinite alternate;}
+		#bd:hover {animation: none;}
+		#medicineGif {width: 160px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+		#orange {width: 65px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); cursor: pointer; animation: jump 1.5s linear infinite alternate;}
+		#book {width: 120px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); cursor: pointer; animation: book 0.4s ease infinite alternate; transform-origin: 50% 100%;}
+
+
+		section p {color: white; font-size: 180px; position: absolute; width: 300%;z-index: 3;}
+		section p:nth-child(1) {top:50px; }
+		section p:nth-child(2) {top:300px; }
+		section p:nth-child(3) {top:550px; }
+
+		section p:nth-child(4) {top:50px; }
+		section p:nth-child(5) {top:300px; }
+		section p:nth-child(6) {top:550px; }
+
+		@keyframes yb {
+			from {transform:translate(-50%,-50%) rotateZ(-10deg);}
+			to {transform:translate(-50%,-50%) rotateZ(10deg);}
+		}
+		@keyframes turn {
+			from{transform:translate(-50%,-50%) rotate(0deg);}
+			to{transform:translate(-50%,-50%) rotate(360deg);}
+		}
+		@keyframes popo {
+			from{transform:translate(-50%,-50%) rotate(-90deg);}
+			to {transform:translate(-50%,-50%) rotate(10deg);}
+		}
+		@keyframes jump {
+			0%{top: 50%;}
+			40%{top: 55%;}
+			50%{top: 62%;}
+			60%{top: 55%;}
+			100%{top:50%;}
+		}
+		@keyframes iv {
+			0% {top:70%; transform:translate(-50%,-50%) rotateZ(0deg);}
+			10% {top:30%; transform:translate(-50%,-50%) rotateZ(345deg);}
+			20% {top:30%; transform:translate(-50%,-50%) rotateZ(-345deg);}
+			30% {top:70%; transform:translate(-50%,-50%) rotateZ(0deg);}
+			100% {top:70%; transform:translate(-50%,-50%) rotateZ(0deg);}
+		}
+		@keyframes bag {
+			from {transform:translate(-50%,-50%) rotateZ(-10deg);}
+			to {transform:translate(-50%,-50%) rotateZ(10deg);}
+		}
+		@keyframes bottle2 {
+			0% {transform:translate(-50%,-50%) rotateZ(0deg);}
+			50% {transform:translate(-50%,-50%) rotateZ(-60deg);}
+			60% {transform:translate(-50%,-50%) rotateZ(-80deg);}
+			80% {transform:translate(-50%,-50%) rotateZ(-90deg);}
+			90% {transform:translate(-50%,-50%) rotateZ(-80deg);}
+			100% {transform:translate(-50%,-50%) rotateZ(-90deg);}
+		}
+		@keyframes book {
+			from{width:  50%; transform:translate(-50%,-50%) top: 50px;}
+			to{width:  60%; transform:translate(-50%,-50%) top: 0;}
+		}
+	</style>
+</head>
+<body>
+	
+	<section>
+	<audio id="ding">
+		<source src="ding.wav" type="audio/mpeg">
+	</audio>
+	<audio id="clangSound">
+		<source src="clang.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="nopainSound">
+		<source src="nopain.mpeg" type="audio/mpeg">
+	</audio>
+	<audio id="ouchSound">
+		<source src="ouch.mpeg" type="audio/mpeg">
+	</audio>
+	<audio id="booksori">
+		<source src="booksori.wav" type="audio/mpeg">
+	</audio>
+	<div class="contain">
+		<div class="bubble" onclick="a()"></div>
+		<div class="bubble2"></div>
+		<div class="box box1" draggable="true">
+			<div class="topBox tB1">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB1">
+				<img draggable="false" id="b1" src="bottle.png">
+			</div>
+		</div>
+		<div class="box box2" draggable="true">
+			<div class="topBox tB2">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB2">
+				<img id="bag1" draggable="false" src="bag.png" onclick="w()">
+				<img id="medicineGif" draggable="false" src="">
+				<audio id="haha">
+					<source src="hahaha.mp3" type="audio/mpeg">
+				</audio>
+			</div>
+		</div>
+		<div class="box box3" draggable="true">
+			<div class="topBox tB3">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB3">
+				<img id="pm" draggable="false" src="p.png">
+				<div class="round2"></div>
+				<div class="round3">
+					<img id="bottle2" draggable="false" src="bottle2.png" onclick="ee()">
+					<img id="clang" draggable="false" src="clang.png">
+				</div>
+			</div>
+		</div>
+		<div class="box box4" draggable="true">
+			<div class="topBox tB4">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB4">
+				<img id="iv" draggable="false" src="iv.png" onclick="f()">
+				<img id="ouch" draggable="false" src="ouch.png">
+			</div>
+		</div>
+		<div class="box box5" draggable="true">
+			<div class="topBox tB5">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB5">
+				<img id="not" draggable="false" src="not.png">
+			</div>
+		</div>
+		<div class="box box6" draggable="true">
+			<div class="topBox tB6">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB6">
+				<img id="m2" draggable="false" src="m2.png">
+			</div>
+		</div>
+		<div class="box box7" draggable="true">
+			<div class="topBox tB7">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB7">
+				<img id="m1" draggable="false" src="medicine.png" onclick="b()">
+				<img id="blah1" draggable="false" src="blah.png" onclick="c()">
+			</div>
+		</div>
+		<div class="box box8" draggable="true">
+			<div class="topBox tB8">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB8">
+				<img id="play" draggable="false" src="play.png" onclick="zz()">
+				<video id="die" draggable="false" src="die.mp4" type="video/mp4"; style="cursor:pointer;" onclick="zzz()"></video>
+			</div>
+		</div>
+		<div class="box box9" draggable="true">
+			<div class="topBox tB9">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB9">
+				<img id="bd" draggable="false" src="bd.png" onclick="p()">
+				<audio id="punch">
+					<source src="punch.mp3" type="audio/mpeg">
+				</audio>
+			</div>
+		</div>
+		<div class="box box10" draggable="true">
+			<div class="topBox tB10">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB10">
+				<img id="orange" draggable="false" src="orange.png" onclick="d()">
+				<audio id="drinking">
+					<source src="drinking.mp3" type="audio/mpeg">
+				</audio>
+			</div>
+		</div>
+		<div class="box box11" draggable="true">
+			<div class="topBox tB11">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB11">
+				<img id="book" draggable="false" src="book.png" onclick="z()">
+			</div>
+		</div>
+		<div class="box box12" draggable="true">
+			<div class="topBox tB12">
+				<div class="round"></div>
+				<div class="round"></div>
+				<div class="round"></div>
+			</div>
+			<div class="bottomBox bB12">
+				<img id="yb" draggable="false" src="yb.png" onclick="h()">
+				<img id="nopain" draggable="false" src="nopain.png">
+			</div>
+		</div>
+		</div>
+	</div>
+</section>
+<section class="sec2">
+	<p id="p1">That medicine acts fast to relieve pain.</p>
+	<p id="p2">The habitual use of this medicine is good for your health.</p>
+	<p id="p3">Medicine is bitter for the tongue, but sweet for the body.</p>
+	<p id="p4">That medicine acts fast to relieve pain.</p>
+	<p id="p5">The habitual use of this medicine is good for your health.</p>
+	<p id="p6">Medicine is bitter for the tongue, but sweet for the body.</p>
+	
+</section>
+	<script type="text/javascript">
+		var total = 0;
+		var j = document.querySelector(".bubble");
+		
+		for(var i=0;i<30;i++){
+			var size = Math.random()*60 + "px";
+
+			var newbubble = j.cloneNode(true);
+			newbubble.style.marginTop = Math.random()*900 + "px";
+			newbubble.style.left = Math.random()*1280 + "px";
+			newbubble.style.animationDuration = Math.random()*5+2+"s";
+			newbubble.style.width = size;
+			newbubble.style.height = size;
+			document.querySelector(".contain").appendChild(newbubble);
+			}
+
+			
+			j.style.display = "none";
+			var box = document.querySelectorAll(".box");
+
+
+
+
+
+		var total = 0;
+		var l = document.querySelector(".bubble2");
+		
+		for(var i=0;i<15;i++){
+			var size = Math.random()*30 + "px";
+
+			var newbubble2 = l.cloneNode(true);
+			newbubble2.style.marginTop = Math.random()*900 + "px";
+			newbubble2.style.left = Math.random()*1280 + "px";
+			newbubble2.style.animationDuration = Math.random()*5+2+"s";
+			newbubble2.style.width = size;
+			newbubble2.style.height = size;
+			document.querySelector(".contain").appendChild(newbubble2);
+			}
+
+			
+			l.style.display = "none";
+			var box = document.querySelectorAll(".box");
+			
+
+
+
+
+
+			var k = 0;
+
+			function f(){
+					k++;
+					if(k%2==1){
+						iv.style.animationPlayState = "running";
+						ouch.style.opacity=1;
+						
+						ouchSound.play();
+						
+					}else if(k%2==0){
+						iv.style.animationPlayState = "paused";
+						ouch.style.opacity=0;
+						
+						ouchSound.pause();
+						
+					}
+			}
+
+			function z(){
+				booksori.play();
+			}
+
+			var o = "off";
+
+			function b(){
+				if (o == "off") {
+					m1.setAttribute("src","medicine2.png")
+					o = "on";
+				}else {
+					m1.setAttribute("src","medicine.png")
+					o = "off"
+				}
+				
+			}
+
+			var s = "off";
+
+			function h(){
+				if (s == "off") {
+					yb.setAttribute("src","yb2.png");
+					yb.style.width = "136px";
+					nopain.style.opacity=1;
+					nopainSound.play();
+					s = "on";
+				}else {
+					yb.setAttribute("src","yb.png");
+					yb.style.width = "100px";
+					nopain.style.opacity=0;
+					nopainSound.pause();
+					s = "off"
+				}
+				
+			}
+
+
+			function zz(){
+				
+				die.play();
+				die.style.zIndex = 99;
+				die.style.opacity = 1;		
+			}
+			function zzz(){
+				die.pause();
+				die.style.zIndex = -99;
+				die.style.opacity = 0;
+			}
+
+
+			var u = "off";
+
+			function w(){
+				if (u == "off") {
+					bag1.setAttribute("src","bagopen.png");
+					medicineGif.setAttribute("src","medicinegif.gif");
+					bag1.style.width = "280px";
+					haha.play();
+					u = "on";
+				}else {
+					bag1.setAttribute("src","bag.png");
+					medicineGif.setAttribute("src","");
+					bag1.style.width = "150px";
+					haha.pause();
+					u = "off"
+				}
+				
+			}
+			var cs = 0;
+			function ee(){
+				cs++;
+				if(cs%2==1){
+
+					clang.style.opacity = 1;
+					clangSound.play();
+				}else if(cs%2==0){
+					clang.style.opacity = 0;
+					clangSound.currentTime = 0;
+
+				}
+				
+			}
+
+
+			var r = "off";
+
+			function p(){
+				if (r == "off") {
+					bd.setAttribute("src","bd2.png")
+					bd.style.width = "65px";
+					punch.play();
+					r = "on";
+				}else {
+					bd.setAttribute("src","bd.png")
+					bd.style.width = "60px";
+					punch.pause();
+					r = "off"
+				}
+				
+			}
+
+
+			var t = "off";
+
+			function d(){
+				if (t == "off") {
+					orange.setAttribute("src","orange.png")
+					drinking.pause();
+					
+					t = "on";
+				}else {
+					orange.setAttribute("src","orange2.png")
+					drinking.play();
+					t = "off"
+				}
+				
+			}
+
+
+
+
+			var e = "off"
+
+			function c(){
+				if (e == "off") {
+					blah1.setAttribute("src","blah2.png")
+					e = "on"
+				}else {
+					blah1.setAttribute("src","blah.png")
+					e = "off"
+				}
+			}
+
+			function a(){
+					ding.play();
+					i++;
+					if(i%2==1){
+						var m = 0;
+							var plus = setInterval(function(){
+								m++;
+								if (m>12){
+									m=0;
+									clearInterval(plus);
+								}
+								if(m%12==1){box[0].style.opacity=1; box[0].style.transform ="scale(1)"}
+								else if(m%12==2){box[1].style.opacity=1; box[1].style.transform ="scale(1)"}
+								else if(m%12==3){box[2].style.opacity=1; box[2].style.transform ="scale(1)"}
+								else if(m%12==4){box[3].style.opacity=1; box[3].style.transform ="scale(1)"}
+								else if(m%12==5){box[4].style.opacity=1; box[4].style.transform ="scale(1)"}
+								else if(m%12==6){box[5].style.opacity=1; box[5].style.transform ="scale(1)"}
+								else if(m%12==7){box[6].style.opacity=1; box[6].style.transform ="scale(1)"}
+								else if(m%12==8){box[7].style.opacity=1; box[7].style.transform ="scale(1)"}
+								else if(m%12==9){box[8].style.opacity=1; box[8].style.transform ="scale(1)"}
+								else if(m%12==10){box[9].style.opacity=1; box[9].style.transform ="scale(1)"}
+								else if(m%12==11){box[10].style.opacity=1; box[10].style.transform ="scale(1)"}
+								else if(m%12==0){box[11].style.opacity=1; box[11].style.transform ="scale(1)"}
+							},280)
+							
+						
+					}else if(i%2==0){
+						ding.pause();
+						var n = 0;
+							var plusn = setInterval(function(){
+								n++;
+								if (n>12){
+									n=0;
+									clearInterval(plusn);
+								}
+								if(n%12==1){box[0].style.opacity=1; box[0].style.transform ="scale(0)"}
+								else if(n%12==2){box[1].style.opacity=1; box[1].style.transform ="scale(0)"}
+								else if(n%12==3){box[2].style.opacity=1; box[2].style.transform ="scale(0)"}
+								else if(n%12==4){box[3].style.opacity=1; box[3].style.transform ="scale(0)"}
+								else if(n%12==5){box[4].style.opacity=1; box[4].style.transform ="scale(0)"}
+								else if(n%12==6){box[5].style.opacity=1; box[5].style.transform ="scale(0)"}
+								else if(n%12==7){box[6].style.opacity=1; box[6].style.transform ="scale(0)"}
+								else if(n%12==8){box[7].style.opacity=1; box[7].style.transform ="scale(0)"}
+								else if(n%12==9){box[8].style.opacity=1; box[8].style.transform ="scale(0)"}
+								else if(n%12==10){box[9].style.opacity=1; box[9].style.transform ="scale(0)"}
+								else if(n%12==11){box[10].style.opacity=1; box[10].style.transform ="scale(0)"}
+								else if(n%12==0){box[11].style.opacity=1; box[11].style.transform ="scale(0)"}
+							},280)
+					}
+			}
+
+
+	</script>
+	<script>
+
+		(function dragndrop() {
+  let xpos = '';
+  let ypos = '';
+  let whichArt = '';
+
+  function resetZ() {
+    const imgEl = document.querySelectorAll('img');
+    for (let i = imgEl.length - 1; i >= 0; i--) {
+      imgEl[i].style.zIndex = 5;
+    }
+  }
+  
+  function moveStart(e) {
+    whichArt = e.target;
+    xpos = e.offsetX === undefined ? e.layerX : e.offsetX;
+    ypos = e.offsetY === undefined ? e.layerY : e.offsetY;
+    whichArt.style.zIndex = 10;
+  }
+
+  function moveDragOver(e) {
+    e.preventDefault();
+  }
+
+  function moveDrop(e) {
+    e.preventDefault();
+    whichArt.style.left = e.pageX - xpos + 'px';
+    whichArt.style.top = e.pageY - ypos + 'px';
+  }
+  
+  function touchStart(e) {
+    e.preventDefault();
+    const whichArt = e.target;
+    const touch = e.touches[0];
+    let moveOffsetX = whichArt.offsetLeft - touch.pageX;
+    let moveOffsetY = whichArt.offsetTop - touch.pageY;
+    resetZ();
+    whichArt.style.zIndex = 10;
+
+    whichArt.addEventListener('touchmove', function() {
+      let posX = touch.pageX + moveOffsetX;
+      let posY = touch.pageY + moveOffsetY;
+      whichArt.style.left = posX + 'px';
+      whichArt.style.top = posY + 'px';
+    }, false);
+  }
+
+  document.querySelector('body').addEventListener('dragstart', moveStart, false);
+  document.querySelector('body').addEventListener('dragover', moveDragOver, false);
+  document.querySelector('body').addEventListener('drop', moveDrop, false);
+  
+  document.querySelector('body').addEventListener('touchstart', touchStart, false);
+
+})();
+
+
+var t = document.getElementById("stst");
+var on = true;
+t.onclick = function(){
+	if(on){
+
+				document.body.style.background = "black";
+				soo.style.background = "url(hhh.gif)";
+				soo.style.backgroundSize = "height:1920px, width:1080px;";
+				
+			}
+
+					
+		}
+
+		var a = document.getElementById("butt");
+a.onclick = function(){
+	if(on){
+
+				document.body.style.background = "black";
+				soo.style.background = "url(gg.gif)";
+				soo.style.backgroundSize = "height:1920px, width:1080px;";
+
+
+				
+			}
+
+					
+		}
+		var z = document.getElementById("lolol");
+z.onclick = function(){
+	if(on){
+
+				document.body.style.background = "black";
+				soo.style.background = "url(lolo.gif)";
+				soo.style.backgroundSize = "height:1920px, width:1080px;";
+
+		
+				
+			}
+
+					
+		}
+
+var w = document.getElementById("choo");
+w.onclick = function(){
+	if(on){
+		document.body.style.background = "black";
+		soo.style.background = "url(cho.gif)";
+		soo.style.backgroundSize = "height:1920px, width:1080px;";	
+			}			
+		}
+	</script>
+	<script type="text/javascript">
+		v = -3200;
+		vv = 100;
+		setInterval(function(){
+			v++;
+			vv++;
+			if(v==window.innerWidth) v=-4700;
+			if (vv==window.innerWidth) {
+				vv = -4700;
+			}
+			p1.style.left = v+"px";
+			p4.style.left = vv+"px";
+		},5)
+
+		b = -4500;
+		bb = 100;
+		setInterval(function(){
+			b++;
+			bb++;
+			if(b==window.innerWidth) b=-7500;
+			if (bb==window.innerWidth) {
+				bb = -7500;
+			}
+			p3.style.left = b+"px";
+			p6.style.left = bb+"px";
+		},7)
+
+		g = 100;
+		gg = 4700;
+		setInterval(function(){
+			g--;
+			gg--;
+			if(g==-4700) g=4700;
+			if (gg==-4700) {
+				gg = 4700;
+			}
+			p2.style.left = g+"px";
+			p5.style.left = gg+"px";
+		},2)
+	</script>
+</body>
+</html>
